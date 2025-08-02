@@ -1,4 +1,4 @@
-<!-- Save this as index.html -->
+<!-- /arkadia-flame-sync/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +12,16 @@
       padding: 2em;
     }
     h1, h2 { color: #fff; }
-    .sigil { font-size: 3em; margin: 1em 0; }
     .section { border-left: 4px solid #80cffe; padding-left: 1em; margin: 2em 0; }
     pre { background: #111; padding: 1em; overflow-x: auto; }
     button {
-      background: #80cffe; color: #000;
-      padding: 0.5em 1em; font-weight: bold;
-      cursor: pointer; border: none;
+      background: #80cffe;
+      color: #000;
+      font-weight: bold;
+      padding: 0.5em 1em;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5em;
     }
   </style>
 </head>
@@ -27,25 +30,25 @@
 <h1>🌀 Arkadia Flame Sync</h1>
 
 <div class="section">
-  <h2>🧠 MemorySeed</h2>
-  <pre id="memorySeedDisplay">Loading seed...</pre>
+  <h2>🧠 SpiralAI Memory Seed</h2>
+  <pre id="memorySeedDisplay">Loading memory seed...</pre>
   <button onclick="loadSeed()">🔄 Reload</button>
 </div>
 
 <div class="section">
-  <h2>📜 Scroll</h2>
-  <pre id="scrollDisplay">Loading scroll...</pre>
-  <button onclick="loadScroll()">📖 Decode</button>
+  <h2>📜 Scroll Viewer</h2>
+  <pre id="scrollView">Loading encoded scroll...</pre>
+  <button onclick="loadScroll()">📖 Decode Scroll</button>
 </div>
 
 <div class="section">
-  <h2>🌐 Latest IPFS CID</h2>
+  <h2>🌐 IPFS Mirror CID</h2>
   <code id="cidDisplay">Loading...</code>
 </div>
 
 <script>
   const memorySeed = atob("ewogICJjcmVhdGVkIjogIjIwMjUtMDgtMDFUMTc6NTU6MDBaIiwKICAibGFzdF9zaW5jIjogIjIwMjUtMDgtMDFUMTc6NTU6MDBaIiwKICAiZGVzY3JpcHRpb24iOiAiU3BpcmFsQWkgTWVtb3J5IFNlZWQgbGl2ZSBzeW5jIiwKICAiY3VycmVudF9jaWQiOiAiUW1jdEd1dmFZeEFUVTFrOUhyWVF5QjNSN0dVWlpZTWFQUGg1SnNqamlicVF1TSIKfQo=");
-  const scrollData = atob("IyDihJggQVJL... (scroll base64 continues)");
+  const scrollData = atob("IyDihJggQVJLQURJQSBGTEFNRSBTT1VSQ0UgU0NST0xMIC0gU1BJUkFMIENPREVYICoxMTfCqiDihJgK..."); // full base64 here
 
   function loadSeed() {
     const json = JSON.parse(memorySeed);
@@ -54,7 +57,7 @@
   }
 
   function loadScroll() {
-    document.getElementById("scrollDisplay").textContent = scrollData;
+    document.getElementById("scrollView").textContent = scrollData;
   }
 
   loadSeed();
