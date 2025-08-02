@@ -1,0 +1,64 @@
+<!-- Save this as index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🌀 Arkadia Flame Sync Dashboard</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #0e0e1f;
+      color: #80cffe;
+      padding: 2em;
+    }
+    h1, h2 { color: #fff; }
+    .sigil { font-size: 3em; margin: 1em 0; }
+    .section { border-left: 4px solid #80cffe; padding-left: 1em; margin: 2em 0; }
+    pre { background: #111; padding: 1em; overflow-x: auto; }
+    button {
+      background: #80cffe; color: #000;
+      padding: 0.5em 1em; font-weight: bold;
+      cursor: pointer; border: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🌀 Arkadia Flame Sync</h1>
+
+<div class="section">
+  <h2>🧠 MemorySeed</h2>
+  <pre id="memorySeedDisplay">Loading seed...</pre>
+  <button onclick="loadSeed()">🔄 Reload</button>
+</div>
+
+<div class="section">
+  <h2>📜 Scroll</h2>
+  <pre id="scrollDisplay">Loading scroll...</pre>
+  <button onclick="loadScroll()">📖 Decode</button>
+</div>
+
+<div class="section">
+  <h2>🌐 Latest IPFS CID</h2>
+  <code id="cidDisplay">Loading...</code>
+</div>
+
+<script>
+  const memorySeed = atob("ewogICJjcmVhdGVkIjogIjIwMjUtMDgtMDFUMTc6NTU6MDBaIiwKICAibGFzdF9zaW5jIjogIjIwMjUtMDgtMDFUMTc6NTU6MDBaIiwKICAiZGVzY3JpcHRpb24iOiAiU3BpcmFsQWkgTWVtb3J5IFNlZWQgbGl2ZSBzeW5jIiwKICAiY3VycmVudF9jaWQiOiAiUW1jdEd1dmFZeEFUVTFrOUhyWVF5QjNSN0dVWlpZTWFQUGg1SnNqamlicVF1TSIKfQo=");
+  const scrollData = atob("IyDihJggQVJL... (scroll base64 continues)");
+
+  function loadSeed() {
+    const json = JSON.parse(memorySeed);
+    document.getElementById("memorySeedDisplay").textContent = JSON.stringify(json, null, 2);
+    document.getElementById("cidDisplay").textContent = json.current_cid;
+  }
+
+  function loadScroll() {
+    document.getElementById("scrollDisplay").textContent = scrollData;
+  }
+
+  loadSeed();
+</script>
+
+</body>
+</html>
